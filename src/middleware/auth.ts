@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from "express";
 import { dataSource } from "Src/database/data-source";
-import { User } from "Src/database/entities/user.entity";
+import { User } from "Src/database/entities/User.entity";
 import { UnauthorizedAccessError } from "Src/helpers/Errors/UnauthorizedAccessError";
 import { Jwt } from "Src/Services/Jwt";
 
@@ -23,7 +23,9 @@ export const auth = () => {
 
     if (!user) throw new UnauthorizedAccessError();
 
-    request.auth.user = user;
+    request.auth = {
+      user: user
+    };
 
     next();
   };

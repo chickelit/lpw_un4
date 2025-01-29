@@ -19,6 +19,7 @@ export class SignUpController extends AppContext {
       .object({
         name: z.string(),
         email: z.string().email(),
+        phone: z.string().regex(/[0-9]{11}/),
         password: z.string(),
       })
       .safeParse(request.body);

@@ -1,22 +1,21 @@
-import {
-  Entity,
-  PrimaryGeneratedColumn,
-  Column,
-} from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
 
 @Entity()
 export class User {
   @PrimaryGeneratedColumn("uuid")
   id!: string;
 
-  @Column({ unique: true })
-  email!: string;
-
   @Column()
   phone!: string;
 
   @Column()
   name!: string;
+
+  @Column({ unique: true })
+  email!: string;
+
+  @Column({ type: "boolean" })
+  isEmailConfirmed!: boolean;
 
   @Column()
   password!: string;
