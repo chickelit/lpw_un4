@@ -1,5 +1,4 @@
 import { Request, Response } from "express";
-import { User } from "Src/database/entities/User.entity";
 import { AppContext } from "Src/helpers/AppContext";
 import { ConflictError } from "Src/helpers/Errors/ConflictError";
 import { ValidationError } from "Src/helpers/Errors/ValidationError";
