@@ -14,7 +14,7 @@ export class User {
   @Column({ unique: true })
   email!: string;
 
-  @Column({ type: "boolean" })
+  @Column({ type: "boolean", default: false })
   isEmailConfirmed!: boolean;
 
   @Column()

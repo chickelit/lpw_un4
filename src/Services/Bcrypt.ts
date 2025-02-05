@@ -6,6 +6,6 @@ export class Bcrypt {
   }
 
   static compare(trial: string | Buffer, target: string) {
-    return bcrypt.compare(trial, target);
+    return bcrypt.compareSync(trial, target);
   }
 }

@@ -8,5 +8,6 @@ export const router = Router();
 router.post("/sign-up", SignUpController.store);
 router.put("/sign-up", SignUpController.update)
 
-router.post("/sign-in", SignInController.store);
 router.get("/sign-in", auth(), SignInController.show);
+router.post("/sign-in", SignInController.store);
+router.put("/sign-in", SignInController.update);

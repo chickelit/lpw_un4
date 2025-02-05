@@ -8,7 +8,9 @@ export class Jwt {
   public static tokenSecret = process.env.JWT_TOKEN_SECRET!;
 
   public static sign(payload: JwtData) {
-    const token = jwt.sign(payload, this.tokenSecret);
+    const token = jwt.sign(payload, this.tokenSecret, {
+      expiresIn: "30d",
+    });
 
     return token;
   }

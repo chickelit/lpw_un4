@@ -1,0 +1,18 @@
+- Ambiente de desenvolvimento e produção
+	- Bom web-server (OLS)
+	- Protocolo seguro 
+	- Acesso remoto via SSH
+	- Deploy em VPS com credenciais seguras
+	- Uso do dotenv
+
+- Autenticação e senhas
+	- Hash de senha
+	- JWT com expiração
+	- Rotas autenticadas
+	- OTP (One-time Passwords)
+		- Autenticação de dois fatores
+		- Curta duração
+		- Salvo em hash
+
+- Mensagens de erro não exageradamente detalhadas
+- Rotas com autenticação

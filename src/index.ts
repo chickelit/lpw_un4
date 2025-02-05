@@ -9,6 +9,7 @@ import bodyParser from "body-parser";
 import { dataSource } from "./database/data-source";
 import { express_async_errors_middleware } from "./middleware/express_async_errors_middleware";
 import { router } from "./routes";
+import logger from "morgan";
 
 const app = express();
 const port = +process.env.PORT!;
@@ -18,8 +19,9 @@ app.use(
     origin: "*",
   })
 );
-app.use(express.urlencoded({ extended: true }));
-app.use(bodyParser.json());
+app.use(logger("dev"));
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.json());
 app.use(router);
 app.use(express_async_errors_middleware);
 

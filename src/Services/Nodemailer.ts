@@ -12,9 +12,9 @@ export class Nodemailer {
     },
   });
 
-  public static send(options: Mail) {
+  public static send(options: Mail.Options) {
     return new Promise((resolve, reject) => {
-      const mail = this.transport.sendMail(options, (err) => reject(err));
+      const mail = this.transport.sendMail({ from: "chickelit@gmail.com", ...options }, (err) => reject(err));
 
       resolve(mail);
     });
