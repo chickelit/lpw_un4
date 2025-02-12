@@ -36,24 +36,25 @@ export class SignUpController extends AppContext {
         throw new ValidationError(error.message, error.errors);
       }
 
-      const isEmailInUse = await this.userRepository.exists({
+      await queryRunner.startTransaction();
+
+      let user = await this.userRepository.findOne({
         where: {
           email: body?.email,
         },
       });
 
-      if (isEmailInUse) throw new ConflictError("Este email já está em uso.");
+      if (!user) {
+        user = await this.userRepository.save(this.userRepository.create(body!));
+      }
 
-      await queryRunner.startTransaction();
-
-      const user = await this.userRepository.save(this.userRepository.create(body!));
       const { otp, code } = await Otp.create({
         userId: user.id,
         type: "sign-up",
         expiresAt: new Date(Date.now() + 5 * 60 * 1000), // 5 minutes
       });
 
-			await Nodemailer.send({
+      await Nodemailer.send({
         to: user.email,
         subject: "Confirmar registro de conta",
         html: `
